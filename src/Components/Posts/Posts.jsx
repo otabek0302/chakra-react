@@ -5,7 +5,7 @@ function Posts ({ posts, show, setShow }) {
   return (
     <Box w='100%' h='100%' >
       <Heading fontSize='18px' color='white'>Category:<span>Game</span></Heading>
-      <Box w='100%' mt={2} h={!show ? '420px' : '100%'} overflow='hidden' display='flex' flexDirection='row' flexWrap='wrap' alignItems="flex-start" justifyContent="space-between">
+      <Box w='100%' mt={2} h='100%' overflow='hidden' display='flex' flexDirection='row' flexWrap='wrap' alignItems="flex-start" justifyContent="space-between">
         {posts.length ? (
           posts.map((item, index) =>  <Post post={item} key={index} /> )
         ) : (
@@ -13,7 +13,7 @@ function Posts ({ posts, show, setShow }) {
         )}
       </Box>
       <VStack>
-          <Button colorScheme='teal' onClick={() => setShow(!false)} color='yellow' variant='outline'>Show More</Button>
+          <Button colorScheme='teal'  color='yellow' variant='outline'>Show More</Button>
       </VStack>
       
     </Box>

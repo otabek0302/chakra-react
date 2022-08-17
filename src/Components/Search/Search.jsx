@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import Item from './Item'
 
-function Search ({ search, setSearch, items }) {
+function Search ({ search, setSearch, post }) {
   return (
     <Box display='flex' flexDirection='column' w='100%' h='430px' p='5px 10px'  >
       <Box w='100%' bg='transparent' display='flex' alignItems="center" borderRadius="5" justifyContent="space-between" p='10px 0' border='none'>
@@ -32,12 +32,12 @@ function Search ({ search, setSearch, items }) {
           fontSize='28px'
           fontWeight='normal'
           bg='white'
-        >
+          >
           Search
         </Button>
       </Box>
       <Box spacing={2}  w='100%' h='100%' display='flex' alignItems="center"  justifyContent="center" >
-        <Item items={items}  />
+        <Item post={post}  />
       </Box>
     </Box>
   )

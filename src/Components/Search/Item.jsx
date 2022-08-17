@@ -1,13 +1,11 @@
 import React from 'react'
 import { VStack } from '@chakra-ui/react'
 
-function Item ({ items }) {
-  const item = items.slice(0, 1)
-  console.log(item);
+function Item ({ post }) {
   return (
      <>
       <VStack  w='100%' color='white' fontSize='5xl'>
-        <h1>{ item.map(item => item.title) }</h1>
+        <h1>{ post?.title }</h1>
       </VStack>
     </>
   )
