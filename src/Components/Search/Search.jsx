@@ -23,6 +23,7 @@ function Search ({ search, setSearch, post }) {
             fontSize='26px'
             border='1px' borderColor='#ccc' 
             borderRadius="5"
+            color='white'
           />
         </FormControl>
         <Button
@@ -31,7 +32,7 @@ function Search ({ search, setSearch, post }) {
           type='submit'
           fontSize='28px'
           fontWeight='normal'
-          bg='white'
+          colorScheme='pink'
           >
           Search
         </Button>

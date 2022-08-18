@@ -16,19 +16,23 @@ function App () {
 	const url = 'http://localhost:3001/'
 
 		useEffect(() => {
-					axios.get(url + 'posts')
-						.then(res => {
-							if (res.status === 200 || res.status === 201) {
-								setPosts(res.data)
-							}
-						})
-		}, [])
+			axios.get(url + 'posts')
+				.then(res => {
+					if (res.status === 200 || res.status === 201) {
+						show ? setPosts(res.data) : setPosts(res.data.slice(0, 4)); 
+					}
+				})
+		}, [show])
 		
 		useEffect(() => {
-			const filteredResults = posts.filter((post) => ((post.title).toLowerCase()).includes(search.toLowerCase()));
-
+			const filteredResults = posts.filter((post) => (((post.author).toLowerCase()).includes(search.toLowerCase())) || (((post.title).toLowerCase()).includes(search.toLowerCase())));
 			setSearchResults(filteredResults.reverse());
 		}, [posts, search])
+	
+	const showAll = () => {
+		setShow(!show)
+	}
+	console.log(show);
 	return (
 		<Box w='100%' height='100%' display='block' backgroundColor='#0f131d' p='20px'>
 			<Box className="container row" pt={'50px'}>
@@ -39,8 +43,8 @@ function App () {
 				/>
 				<Posts
 					posts={searchResults}
+					showAll={showAll}
 					show={show}
-					setShow={setShow}
 				/>
 			</Box>
 		</Box>
