@@ -5,7 +5,7 @@ function Item ({ post }) {
   return (
      <>
       <VStack  w='100%' color='white' fontSize='5xl'>
-        <h1>{ post?.title }</h1>
+        <h1>{ !post ? 'There no title' : (post?.title) }</h1>
       </VStack>
     </>
   )

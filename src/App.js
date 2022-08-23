@@ -12,18 +12,21 @@ function App () {
 	const [search, setSearch] = useState('')
 	const [show, setShow] = useState(false)
 	const [searchResults, setSearchResults] = useState([]);
+	const [category, setCategory] = useState('')
 
-	const url = 'http://localhost:3001/'
-
+	console.log(category);
+	const url = `http://hn.algolia.com/api/v1/search?query=${search}&tags=${category}`
+	
 		useEffect(() => {
-			axios.get(url + 'posts')
+			axios.get(url)
 				.then(res => {
 					if (res.status === 200 || res.status === 201) {
-						show ? setPosts(res.data) : setPosts(res.data.slice(0, 4)); 
+						show ? setPosts(res.data.hits) : setPosts(res.data.hits.slice(0, 4));
+						console.log(res.data);
 					}
 				})
-		}, [show])
-		
+		},[category])
+	
 		useEffect(() => {
 			const filteredResults = posts.filter((post) => (((post.author).toLowerCase()).includes(search.toLowerCase())) || (((post.title).toLowerCase()).includes(search.toLowerCase())));
 			setSearchResults(filteredResults.reverse());
@@ -40,6 +43,7 @@ function App () {
 					search={search}
 					setSearch={setSearch}
 					post={searchResults[0]}
+					setCategory={setCategory}
 				/>
 				<Posts
 					posts={searchResults}

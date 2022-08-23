@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from '@chakra-ui/react'
+import { Input, VStack, WrapItem, Wrap } from '@chakra-ui/react'
 import { Box } from "@chakra-ui/react"
 
 import {
@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import Item from './Item'
 
-function Search ({ search, setSearch, post }) {
+function Search ({ search, setCategory, post, setSearch }) {
   return (
     <Box display='flex' flexDirection='column' w='100%' h='430px' p='5px 10px'  >
       <Box w='100%' bg='transparent' display='flex' alignItems="center" borderRadius="5" justifyContent="space-between" p='10px 0' border='none'>
@@ -37,6 +37,35 @@ function Search ({ search, setSearch, post }) {
           Search
         </Button>
       </Box>
+      <VStack w='100%' h='100px'>
+        <Wrap spacing={4}>
+          <WrapItem>
+            <Button
+              onClick={() => setCategory('story')}
+              colorScheme='gray'>Story</Button>
+          </WrapItem>
+          <WrapItem>
+            <Button
+              onClick={() => setCategory('comment')}
+              colorScheme='red'>Comment</Button>
+          </WrapItem>
+          <WrapItem>
+            <Button
+              onClick={() => setCategory('poll')}
+              colorScheme='orange'>Poll</Button>
+          </WrapItem>
+          <WrapItem>
+            <Button
+              onClick={() => setCategory('pollopt')}
+              colorScheme='yellow'>Yellow</Button>
+          </WrapItem>
+          <WrapItem>
+            <Button
+              onClick={() => setCategory('front_page')}
+              colorScheme='green'>Green</Button>
+          </WrapItem>
+        </Wrap>
+      </VStack>
       <Box spacing={2}  w='100%' h='100%' display='flex' alignItems="center"  justifyContent="center" >
         <Item post={post}  />
       </Box>
